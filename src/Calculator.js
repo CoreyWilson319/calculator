@@ -16,9 +16,24 @@ class Calculator extends Component {
         this.setState({ [num]: parseInt(e.target.value)});
       }
 
-    handleClick = () => {
+    handleAddClick = () => {
         this.setState((state) => ({
             display: state.num1 + state.num2
+        }))
+    }
+    handleSubtractClick = () => {
+        this.setState((state) => ({
+            display: state.num1 - state.num2
+        }))
+    }
+    handleMultiplyClick = () => {
+        this.setState((state) => ({
+            display: state.num1 * state.num2
+        }))
+    }
+    handleDivideClick = () => {
+        this.setState((state) => ({
+            display: state.num1 / state.num2
         }))
     }
     render() {
@@ -33,14 +48,18 @@ class Calculator extends Component {
                 placeholder="Enter your first number"
                 value={this.state.num1}
                 />
-                <span>+</span>
+                <span>
+                <button onClick={this.handleAddClick}>+</button>
+                <button onClick={this.handleSubtractClick}>-</button>
+                <button onClick={this.handleDivideClick}>/</button>
+                <button onClick={this.handleMultiplyClick}>*</button>
+                </span>
                 <input 
                 type="text" 
                 onChange={(e)=> this.setNum(e, "num2")}
                 placeholder="Enter your second number"
                 value={this.state.num2}
                 />
-                <button onClick={this.handleClick}>=</button>
                 <h3>{this.state.display}</h3>
             </div>
             </div>
